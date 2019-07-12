@@ -1,0 +1,23 @@
+<div class="container">
+	<div class="row">
+		<section class="col-xs-6 col-xs-offset-3 book-edit">
+			<h1 class="edit-title">Editing Book</h1>
+
+			<%= form_for @book do |f| %>
+				<div class="field">
+				    <%= f.label :title %><br />
+				    <%= f.text_field :title, class:"col-xs-12 side-menu-form" %>
+			    </div>
+			    <div class="field">
+				    <label>Opinion</label><br />
+				    <%= f.text_area :body, class:"col-xs-12 side-menu-form" %>
+			    </div>
+
+			    <%= f.submit "Update Book", class:"btn btn-primary col-xs-12 side-menu-form" %>
+			<% end %>
+
+			<p class="form-links"><%= link_to "Show", book_path(@book) %> | <%= link_to "Back", books_path %></p>
+		</section>
+		<div class="col-xs-3"></div>
+	</div>
+</div>

@@ -1,0 +1,66 @@
+<div class="container">
+	
+	<% if flash[:notice] %>
+		<p class="flash"><%= flash[:notice] %></p>
+	<% end %>
+
+	<div class="row">
+		<div class="col-xs-3 us-left">
+			<section class="user-info">
+				<h2>User info</h2>
+				<%= attachment_image_tag @user, :profile_image, :fill, 100, 100, fallback: "no_image.jpg", size:'100x100' %>
+				<table width="100%" class="table table-striped">
+					<thead>
+						<tr>
+							<th width="40%">name</th>
+							<th><%= @user.name %></th>
+						</tr>
+						<tr>
+							<th width="40%">introduction</th>
+							<th><%= @user.introduction %></th>
+						</tr>
+					</thead>
+				</table>
+				<%= link_to "", edit_user_path(@user), class:"btn btn-default glyphicon glyphicon-wrench side-menu col-xs-12" %>
+			</section>
+			<section class="new-book">
+				<h2>New book</h2>
+
+				<%= form_for @book do |f| %>
+					<div class="field">
+					    <%= f.label :title %><br />
+					    <%= f.text_field :title, class:"col-xs-12 side-menu-form" %>
+				    </div>
+				    <div class="field">
+					    <label>Opinion</label><br />
+					    <%= f.text_area :body, class:"col-xs-12 side-menu-form" %>
+				    </div>
+
+				    <%= f.submit "Create Book", class:"btn btn-primary col-xs-12 side-menu-form" %>
+				<% end %>
+
+			</section>
+		</div>
+		<section class="col-xs-9 us-right">
+			<h2>Books</h2>
+			<table class="table table-striped">
+				<thead>
+					<tr>
+						<th colspan="1" width="20%"></th>
+						<th width="40%">Title</th>
+						<th width="40%">Opinion</th>
+					</tr>
+				</thead>
+				<tbody>
+					<% @books.each do |book| %>
+					<tr>
+						<td><%= attachment_image_tag book.user, :profile_image, :fill, 50, 50, fallback: "no_image.jpg", size:'40x40' %></td>
+						<td><%= link_to "#{book.title}", book_path(book) %></td>
+						<td><%= book.body %></td>
+					</tr>
+					<% end %>
+				</tbody>
+			</table>
+		</section>
+	</div>
+</div>
