@@ -1,4 +1,7 @@
 <div class="container">
+	<% if flash[:notice] %>
+		<p class="flash"><%= flash[:notice] %></p>
+	<% end %>
 	<div class="row">
 		<div class="col-xs-3 us-left">
 			<section class="user-info">
