@@ -1,4 +1,7 @@
 <div class="container">
+	<% if flash[:notice] %>
+		<p class="flash"><%= flash[:notice] %></p>
+	<% end %>
 	<div class="col-xs-6 col-xs-offset-3 top-message">
 		<h1 class="top-title">welcome to <span class="glyphicon glyphicon-book" aria-hidden="true"></span> Bookers !!</h1>
 
